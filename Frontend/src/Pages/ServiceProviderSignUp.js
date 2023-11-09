@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 
-const UserSignUp = () => {
+const ServiceProviderSignUp = () => {
     const navigate = useNavigate();
-    // const url = 'http://localhost:2023/users/signup';
     const [message, setmessage] = useState();
+    // const url = 'http://localhost:2023/users/service-provider/signup';
 
     const formik = useFormik({
         initialValues: {
-            firstName: "",
-            lastName: '',
+            companyName: '',
             address: '',
             city: '',
             province: '',
@@ -20,9 +19,8 @@ const UserSignUp = () => {
             password: ''
         },
         onSubmit: (values)=>{
-            const userDetails = {
-                firstName: values.firstName,
-                lastName: values.lastName,
+            const serviceProviderDetails = {
+                companyName: values.companyName,
                 address: values.address,
                 city: values.city,
                 province: values.province,
@@ -31,21 +29,17 @@ const UserSignUp = () => {
                 password: values.password
             };
 
-            // axios.post (url, userDetails).then((res)=>{
+            // axios.post(url, serviceProviderDetails).then((res)=>{
             //     setmessage(res.data.message);
             //     if(res.data.status){
-            //         navigate('/users/signin');
+            //         navigate('/service-provider/signin');
             //     }
             // })
         },
         validate: (values)=>{
             let errors = {};
-            if(!values.firstName){
-                errors.firstName = 'This field is required'
-            }
-
-            if(!values.lastName){
-                errors.lastName = 'This field is required'
+            if(!values.companyName){
+                errors.companyName = 'This field is required'
             }
 
             if(!values.address){
@@ -77,23 +71,19 @@ const UserSignUp = () => {
     })
   return (
     <div>
-        <div className="container">
+         <div className="container">
             <div className="row">
                 <div className="col-7 mx-auto shadow p-5 mb-5 mt-5">
-                    <h3 className='text-center'>User Sign Up</h3>
+                    <h3 className='text-center'>Service Provider Sign Up</h3>
                     <p className='text-center'>Welcome to HairConnect</p>
                     <p className='text-center'><em>...Where Beauty Meets Convenience</em></p>
-                    <p className='text-center text-success'>Want to become a registered HairConnect service provider? Create an account <a href="/service-provider/signup">here.</a></p>
+                    <p className='text-center text-success'>Want to become a registered HairConnect user? Create an account <a href="/users/signup">here.</a></p>
                     <div className='text-center'>{message}</div>
 
                     <form action="" onSubmit={formik.handleSubmit}>
-                        <label><strong>First Name</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='firstName'/>
-                        {formik.touched.firstName ? <div className='text-danger'>{formik.errors.firstName}</div> : ''}
-
-                        <label><strong>Last Name</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='lastName'/>
-                        {formik.touched.lastName ? <div className='text-danger'>{formik.errors.lastName}</div> : ''}
+                        <label><strong>Company Name</strong></label>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='companyName'/>
+                        {formik.touched.companyName ? <div className='text-danger'>{formik.errors.companyName}</div> : ''}
 
                         <label><strong>Address</strong></label>
                         <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='address'/>
@@ -137,4 +127,4 @@ const UserSignUp = () => {
   )
 }
 
-export default UserSignUp
+export default ServiceProviderSignUp
