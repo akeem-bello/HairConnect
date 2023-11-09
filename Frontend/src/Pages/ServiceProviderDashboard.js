@@ -2,30 +2,30 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const UserDashboard = () => {
+const ServiceProviderDashboard = () => {
     const navigate = useNavigate();
     // const url = 'http://localhost:2023/users/dashboard';
-    // const hairConnectToken = localStorage.hairConnectToken;
-    const [userDetails, setuserDetails] = useState('');
+    // const hairConnectToken2 = localStorage.hairConnectToken2;
+    const [companyDetails, setcompanyDetails] = useState('');
 
     // axios.get(url, {
     //     headers:{
-    //     "Authorization": `Bearer ${hairConnectToken}`,
+    //     "Authorization": `Bearer ${hairConnectToken2}`,
     //     "Accept": "application/json",
     //     "Content-Type": "application/json"
     //   }}).then((res)=>{
     //     if(!res.data.status){
-    //         localStorage.removeItem('hairConnectToken');
-    //         navigate('/users/signin');
+    //         localStorage.removeItem('hairConnectToken2');
+    //         navigate('/service-provider/signin');
     //     }else{
     //         console.log(res);
-    //         setuserDetails(res.data.result);
+    //         setcompanyDetails(res.data.result);
     //     }
     //   })
 
     const signOut = ()=>{
-        // localStorage.removeItem('hairConnectToken');
-        navigate('/users/signin');
+        // localStorage.removeItem('hairConnectToken2');
+        navigate('/service-provider/signin');
     }
   return (
     <div>
@@ -49,4 +49,4 @@ const UserDashboard = () => {
   )
 }
 
-export default UserDashboard
+export default ServiceProviderDashboard

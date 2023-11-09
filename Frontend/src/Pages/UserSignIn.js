@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const UserSignIn = () => {
     const navigate = useNavigate();
-    const [email, setemail] = useState();
-    const [password, setpassword] = useState();
-    const [message, setmessage] = useState();
+    const [email, setemail] = useState('');
+    const [password, setpassword] = useState('');
+    const [message, setmessage] = useState('');
     // const url = 'http://localhost:2023/users/signin';
 
     const signIn = ()=>{

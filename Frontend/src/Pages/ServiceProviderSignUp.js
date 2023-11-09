@@ -5,7 +5,7 @@ import { useFormik } from 'formik';
 
 const ServiceProviderSignUp = () => {
     const navigate = useNavigate();
-    const [message, setmessage] = useState();
+    const [message, setmessage] = useState('');
     // const url = 'http://localhost:2023/users/service-provider/signup';
 
     const formik = useFormik({
