@@ -31,7 +31,7 @@ const UserSignIn = () => {
                       <button type='submit' className='btn btn-primary my-2 w-100' onClick={signIn}>Sign In</button> 
                    <div className='mt-2'><p>By continuing, you agree to HairConnect's <u>Conditions of Use</u> and <u>Privacy Notice.</u></p></div>
                    <div>
-                        <p><strong>Service Provider</strong> Sign In <a href="/service-provider/signin">here.</a></p>
+                        <p><strong>Barber/Hairdresser</strong> Sign In <a href="/service-provider/signin">here.</a></p>
                     </div>
                </div>             
            </div>

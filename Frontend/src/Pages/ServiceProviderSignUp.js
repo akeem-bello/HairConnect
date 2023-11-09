@@ -74,7 +74,7 @@ const ServiceProviderSignUp = () => {
          <div className="container">
             <div className="row">
                 <div className="col-7 mx-auto shadow p-5 mb-5 mt-5">
-                    <h3 className='text-center'>Service Provider Sign Up</h3>
+                    <h3 className='text-center'>Barber/Hairdresser Sign Up</h3>
                     <p className='text-center'>Welcome to HairConnect</p>
                     <p className='text-center'><em>...Where Beauty Meets Convenience</em></p>
                     <p className='text-center text-success'>Want to become a registered HairConnect user? Create an account <a href="/users/signup">here.</a></p>

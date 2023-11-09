@@ -83,7 +83,7 @@ const UserSignUp = () => {
                     <h3 className='text-center'>User Sign Up</h3>
                     <p className='text-center'>Welcome to HairConnect</p>
                     <p className='text-center'><em>...Where Beauty Meets Convenience</em></p>
-                    <p className='text-center text-success'>Want to become a registered HairConnect service provider? Create an account <a href="/service-provider/signup">here.</a></p>
+                    <p className='text-center text-success'>Want to become a registered HairConnect barber/hairdresser? Create an account <a href="/service-provider/signup">here.</a></p>
                     <div className='text-center'>{message}</div>
 
                     <form action="" onSubmit={formik.handleSubmit}>

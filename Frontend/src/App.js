@@ -6,6 +6,7 @@ import UserSignUp from './Pages/UserSignUp';
 import ServiceProviderSignUp from './Pages/ServiceProviderSignUp';
 import UserSignIn from './Pages/UserSignIn';
 import ServiceProviderSignIn from './Pages/ServiceProviderSignIn';
+import UserDashboard from './Pages/UserDashboard';
 
 const App = ()=>{
   const hairConnectToken = localStorage.hairConnectToken;
@@ -19,6 +20,7 @@ const App = ()=>{
           <Route path='/service-provider/signup' element={<ServiceProviderSignUp />} />
           <Route path='/users/signin' element={<UserSignIn />} />
           <Route path='/service-provider/signin' element={<ServiceProviderSignIn />} />
+          <Route path='/users/dashboard' element={<UserDashboard/>} />
         </Routes>
         <Footer />
     </>
