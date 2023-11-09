@@ -2,20 +2,20 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const UserSignIn = () => {
+const ServiceProviderSignIn = () => {
     const navigate = useNavigate();
+    // const url = 'http://localhost:2023/users/service-provider/signin';
     const [email, setemail] = useState();
     const [password, setpassword] = useState();
     const [message, setmessage] = useState();
-    // const url = 'http://localhost:2023/users/signin';
 
     const signIn = ()=>{
-        const userDetails = {email, password};
-        // axios.post(url, userDetails).then((res)=>{
+        const serviceProviderDetails = {email, password};
+        // axios.post(url, serviceProviderDetails).then((res)=>{
         //     setmessage(res.data.message);
-        //     localStorage.hairConnectToken = res.data.hairConnectToken;
+        //     localStorage.hairConnectToken2 = hairConnectToken2;
         //     if(res.data.status){
-        //         navigate('/users/dashboard');
+        //         navigate('/service-provider/dashboard')
         //     }
         // })
     }
@@ -31,7 +31,7 @@ const UserSignIn = () => {
                       <button type='submit' className='btn btn-primary my-2 w-100' onClick={signIn}>Sign In</button> 
                    <div className='mt-2'><p>By continuing, you agree to HairConnect's <u>Conditions of Use</u> and <u>Privacy Notice.</u></p></div>
                    <div>
-                        <p><strong>Service Provider</strong> Sign In <a href="/service-provider/signin">here.</a></p>
+                        <p><strong>User</strong> Sign In <a href="/users/signin">here.</a></p>
                     </div>
                </div>             
            </div>
@@ -40,4 +40,4 @@ const UserSignIn = () => {
   )
 }
 
-export default UserSignIn
+export default ServiceProviderSignIn

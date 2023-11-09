@@ -5,9 +5,11 @@ import Footer from './Components/Footer';
 import UserSignUp from './Pages/UserSignUp';
 import ServiceProviderSignUp from './Pages/ServiceProviderSignUp';
 import UserSignIn from './Pages/UserSignIn';
+import ServiceProviderSignIn from './Pages/ServiceProviderSignIn';
 
 const App = ()=>{
   const hairConnectToken = localStorage.hairConnectToken;
+  const hairConnectToken2 = localStorage.hairConnectToken2;
   return (
     <>
         <NavBar />
@@ -16,6 +18,7 @@ const App = ()=>{
           <Route path='/users/signup' element={<UserSignUp />} />
           <Route path='/service-provider/signup' element={<ServiceProviderSignUp />} />
           <Route path='/users/signin' element={<UserSignIn />} />
+          <Route path='/service-provider/signin' element={<ServiceProviderSignIn />} />
         </Routes>
         <Footer />
     </>
