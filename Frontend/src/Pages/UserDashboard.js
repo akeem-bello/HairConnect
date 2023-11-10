@@ -32,12 +32,9 @@ const UserDashboard = () => {
         <div>
             <div className="row">
                 <div className="col-3">
-                    <ul type='none'>
-                        <li><a href="">Appointments</a></li>
-                        <li><a href="">Find a barber/hairdresser</a></li>
-                        <li><a href="">Wallet</a></li>
-                        <li><a onClick={signOut} href=''><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out</a></li>
-                    </ul>
+                <   div><a href="">Appointments</a></div>
+                    <div><a href="">Wallet</a></div>
+                    <div><a onClick={signOut} href=''><i class="fa-solid fa-arrow-right-from-bracket"></i>  Sign Out</a></div>
                 </div>
 
                 <div className="col-9">
