@@ -32,7 +32,8 @@ const UserDashboard = () => {
         <div>
             <div className="row">
                 <div className="col-3">
-                <   div><a href="">Appointments</a></div>
+                    <div><a href="">Appointments</a></div>
+                    <div><a href="">Find a barber/hairdresser</a></div>
                     <div><a href="">Wallet</a></div>
                     <div><a onClick={signOut} href=''><i class="fa-solid fa-arrow-right-from-bracket"></i>  Sign Out</a></div>
                 </div>

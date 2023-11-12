@@ -87,20 +87,16 @@ const UserSignUp = () => {
                     <div className='text-center'>{message}</div>
 
                     <form action="" onSubmit={formik.handleSubmit}>
-                        <label><strong>First Name</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='firstName'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='firstName' placeholder='First name'/>
                         {formik.touched.firstName ? <div className='text-danger'>{formik.errors.firstName}</div> : ''}
 
-                        <label><strong>Last Name</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='lastName'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='lastName' placeholder='Last name'/>
                         {formik.touched.lastName ? <div className='text-danger'>{formik.errors.lastName}</div> : ''}
 
-                        <label><strong>Address</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='address'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='address' placeholder='Address'/>
                         {formik.touched.address ? <div className='text-danger'>{formik.errors.address}</div> : ''}
 
-                        <label><strong>City</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='city'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='city' placeholder='City'/>
                         {formik.touched.city ? <div className='text-danger'>{formik.errors.city}</div> : ''}
 
                         <select className='w-100' onChange={formik.handleChange} onBlur={formik.handleBlur} name='province'>
@@ -116,16 +112,13 @@ const UserSignUp = () => {
                         </select>
                         {formik.touched.province ? <div className='text-danger'>{formik.errors.province}</div> : ''}
 
-                        <label><strong>Phone Number</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber' placeholder='Phone number'/>
                         {formik.touched.phoneNumber ? <div className='text-danger'>{formik.errors.phoneNumber}</div> : ''}
 
-                        <label><strong>Email Address</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='email'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='email' placeholder='E-mail address'/>
                         {formik.touched.email ? <div className='text-danger'>{formik.errors.email}</div> : ''}
 
-                        <label><strong>Password</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='password'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='password' placeholder='Password'/>
                         {formik.touched.password ? <div className='text-danger'>{formik.errors.password}</div> : ''}
                         
                         <button type='submit' className='btn mt-4 w-100 p-2 justify-center bg-success'>Sign Up</button>
