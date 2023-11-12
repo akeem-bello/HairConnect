@@ -81,16 +81,13 @@ const ServiceProviderSignUp = () => {
                     <div className='text-center'>{message}</div>
 
                     <form action="" onSubmit={formik.handleSubmit}>
-                        <label><strong>Company Name</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='companyName'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='companyName' placeholder='Company name'/>
                         {formik.touched.companyName ? <div className='text-danger'>{formik.errors.companyName}</div> : ''}
 
-                        <label><strong>Address</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='address'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='address' placeholder='Address'/>
                         {formik.touched.address ? <div className='text-danger'>{formik.errors.address}</div> : ''}
 
-                        <label><strong>City</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='city'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='city' placeholder='City'/>
                         {formik.touched.city ? <div className='text-danger'>{formik.errors.city}</div> : ''}
 
                         <select className='w-100' onChange={formik.handleChange} onBlur={formik.handleBlur} name='province'>
@@ -106,16 +103,13 @@ const ServiceProviderSignUp = () => {
                         </select>
                         {formik.touched.province ? <div className='text-danger'>{formik.errors.province}</div> : ''}
 
-                        <label><strong>Phone Number</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='phoneNumber' placeholder='Phone number'/>
                         {formik.touched.phoneNumber ? <div className='text-danger'>{formik.errors.phoneNumber}</div> : ''}
 
-                        <label><strong>Email Address</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='email'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='email' placeholder='E-mail address'/>
                         {formik.touched.email ? <div className='text-danger'>{formik.errors.email}</div> : ''}
 
-                        <label><strong>Password</strong></label>
-                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='password'/>
+                        <input type="text" className='form-control my-2' onChange={formik.handleChange} onBlur={formik.handleBlur} name='password' placeholder='Password'/>
                         {formik.touched.password ? <div className='text-danger'>{formik.errors.password}</div> : ''}
                         
                         <button type='submit' className='btn mt-4 w-100 p-2 justify-center bg-success'>Sign Up</button>
