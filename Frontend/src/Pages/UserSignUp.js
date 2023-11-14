@@ -5,7 +5,7 @@ import { Formik, useFormik } from 'formik';
 
 const UserSignUp = () => {
     const navigate = useNavigate();
-    // const url = 'http://localhost:2023/users/signup';
+    const url = 'http://localhost:2023/users/signup';
     const [message, setmessage] = useState('');
 
     const formik = useFormik({
@@ -31,12 +31,12 @@ const UserSignUp = () => {
                 password: values.password
             };
 
-            // axios.post (url, userDetails).then((res)=>{
-            //     setmessage(res.data.message);
-            //     if(res.data.status){
-            //         navigate('/users/signin');
-            //     }
-            // })
+            axios.post (url, userDetails).then((res)=>{
+                setmessage(res.data.message);
+                if(res.data.status){
+                    navigate('/users/signin');
+                }
+            })
         },
         validate: (values)=>{
             let errors = {};
