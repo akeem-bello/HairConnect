@@ -7,17 +7,17 @@ const UserSignIn = () => {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const [message, setmessage] = useState('');
-    // const url = 'http://localhost:2023/users/signin';
+    const url = 'http://localhost:2023/users/signin';
 
     const signIn = ()=>{
         const userDetails = {email, password};
-        // axios.post(url, userDetails).then((res)=>{
-        //     setmessage(res.data.message);
-        //     localStorage.hairConnectToken = res.data.hairConnectToken;
-        //     if(res.data.status){
-        //         navigate('/users/dashboard');
-        //     }
-        // })
+        axios.post(url, userDetails).then((res)=>{
+            setmessage(res.data.message);
+            localStorage.hairConnectToken = res.data.hairConnectToken;
+            if(res.data.status){
+                navigate('/users/dashboard');
+            }
+        })
     }
   return (
     <div>
