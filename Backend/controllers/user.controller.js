@@ -1,5 +1,5 @@
 const userModel = require('../models/user.model');
-const SECRET = proccess.env.SECRET;
+const SECRET = process.env.SECRET;
 const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res)=>{
@@ -22,33 +22,33 @@ const registerUser = async (req, res)=>{
       
 }
 
-const userSignIn = (req, res)=>{
+const userSignIn = async (req, res)=>{
   const userDetails = req.body;
   const email = userDetails.email;
   const password = userDetails.password;
-  userModel.findOne({email:email}, (err, user)=>{
-    if(err){
-      console.log(err);
-      res.status(500).send({message: 'Internal Server Error', status:false});
-    }else{
-      if(!user){
-        res.send({message: 'E-mail does not exist, kindly create an account', status:false})
-      }else{
-        user.validatePassword(password, (err, same)=>{
-          if(err){
-              res.status(500).send({message: 'Internal Server Error.', status: false});
-          }else{
-              if(!same){
-                  res.send({message: 'Some of your information is not correct. Please try again.', status: false});
-              }else{
-                  const hairConnectToken = jwt.sign({email}, SECRET, {expiresIn: '10h'})
-                  res.send({message: 'Sign in successful.', status: true, hairConnectToken});
-              }
-          }
-      })
-      }
+  
+  try {
+    const user = await userModel.findOne({ email: email });
+  
+    if(!user) {
+      res.send({ message: 'E-mail does not exist, kindly create an account', status: false });
+      return;
     }
-  })
+  
+    const isPasswordValid = await user.validatePassword(password);
+  
+    if(!isPasswordValid) {
+      res.send({ message: 'Your password is incorrect, please try again.', status: false });
+      return;
+    }
+  
+    const hairConnectToken = jwt.sign({ email }, SECRET, { expiresIn: '10h' });
+    res.send({ message: 'Sign in successful.', status: true, hairConnectToken });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ message: 'Internal Server Error', status: false });
+  }
+  
 }
 
 module.exports = {
