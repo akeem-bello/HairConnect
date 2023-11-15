@@ -35,9 +35,11 @@ const userSignIn = async (req, res)=>{
     if(!isPasswordValid){
       res.send({ message: 'Your password is incorrect, please try again.', status: false });
       return;
+    }else{
+      const hairConnectToken = jwt.sign({ email }, SECRET, { expiresIn: '10h' });
+      res.send({ message: 'Sign in successful.', status: true, hairConnectToken });
     }
-    const hairConnectToken = jwt.sign({ email }, SECRET, { expiresIn: '10h' });
-    res.send({ message: 'Sign in successful.', status: true, hairConnectToken });
+    
   }catch(err){
     console.error(err);
     res.status(500).send({ message: 'Internal Server Error', status: false });
