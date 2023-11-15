@@ -1,4 +1,6 @@
 const userModel = require('../models/user.model');
+const SECRET = proccess.env.SECRET;
+const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res)=>{
     const userDetails = req.body;
