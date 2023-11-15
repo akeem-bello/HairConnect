@@ -4,27 +4,27 @@ import { useNavigate } from 'react-router-dom';
 
 const UserDashboard = () => {
     const navigate = useNavigate();
-    // const url = 'http://localhost:2023/users/dashboard';
-    // const hairConnectToken = localStorage.hairConnectToken;
+    const url = 'http://localhost:2023/users/dashboard';
+    const hairConnectToken = localStorage.hairConnectToken;
     const [userDetails, setuserDetails] = useState('');
 
-    // axios.get(url, {
-    //     headers:{
-    //     "Authorization": `Bearer ${hairConnectToken}`,
-    //     "Accept": "application/json",
-    //     "Content-Type": "application/json"
-    //   }}).then((res)=>{
-    //     if(!res.data.status){
-    //         localStorage.removeItem('hairConnectToken');
-    //         navigate('/users/signin');
-    //     }else{
-    //         console.log(res);
-    //         setuserDetails(res.data.result);
-    //     }
-    //   })
+    axios.get(url, {
+        headers:{
+        "Authorization": `Bearer ${hairConnectToken}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }}).then((res)=>{
+        if(!res.data.status){
+            localStorage.removeItem('hairConnectToken');
+            navigate('/users/signin');
+        }else{
+            console.log(res);
+            setuserDetails(res.data.userDetails);
+        }
+      })
 
     const signOut = ()=>{
-        // localStorage.removeItem('hairConnectToken');
+        localStorage.removeItem('hairConnectToken');
         navigate('/users/signin');
     }
   return (
@@ -39,7 +39,7 @@ const UserDashboard = () => {
                 </div>
 
                 <div className="col-9">
-                    <h4>Welcome, </h4>
+                    <h4>Welcome, {userDetails.firstName}</h4>
                 </div>
             </div>
         </div>
