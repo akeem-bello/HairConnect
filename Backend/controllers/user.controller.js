@@ -1,4 +1,5 @@
 const userModel = require('../models/user.model');
+const serviceProviderModel = require('../models/serviceProvider.model');
 const SECRET = process.env.SECRET;
 const jwt = require('jsonwebtoken');
 
@@ -60,9 +61,23 @@ const getUserDashboard = async (req, res) => {
   }
 };
 
-// const registerServiceProvider = (req, res)=>{
-
-// }
+const registerServiceProvider = async (req, res)=>{
+  const serviceProviderDetails = req.body;
+  const email = serviceProviderDetails.email;
+  try{
+    const result = await serviceProviderModel.findOne({email: email}).exec();
+    if(result){
+      res.send({message: 'E-mail already exists', status:false})
+    }else{
+      const form = new serviceProviderModel(serviceProviderDetails);
+      await form.save();
+      res.send({message: 'Sign in successful.', status:true});
+    }
+  }catch(err){
+      console.log(err);
+      res.status(500).send({message: 'Internal Server Error.', status:false})
+    }
+}
 
 
 module.exports = {
