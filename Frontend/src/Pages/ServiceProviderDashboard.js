@@ -38,7 +38,7 @@ const ServiceProviderDashboard = () => {
                 </div>
 
                 <div className="col-9">
-                    <h4>Welcome, {serviceProviderDetails.companyName}</h4>
+                    <h4>Welcome, {companyDetails.companyName}</h4>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@ serviceProviderSchema.pre('save', function(next){
             console.log(err);
         }else{
             this.password = hashedPassword;
-            (next);
+            next();
         }
     })
 })

@@ -13,7 +13,7 @@ const ServiceProviderSignIn = () => {
         const serviceProviderDetails = {email, password};
         axios.post(url, serviceProviderDetails).then((res)=>{
             setmessage(res.data.message);
-            localStorage.hairConnectToken2 = hairConnectToken2;
+            localStorage.hairConnectToken2 = res.data.hairConnectToken2;
             if(res.data.status){
                 navigate('/service-provider/dashboard')
             }

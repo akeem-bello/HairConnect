@@ -66,7 +66,7 @@ const registerServiceProvider = async (req, res)=>{
   const serviceProviderDetails = req.body;
   const email = serviceProviderDetails.email;
   try{
-    const result = await serviceProviderModel.findOne({email: email}).exec();
+    const result = await serviceProviderModel.findOne({email: email});
     if(result){
       res.send({message: 'E-mail already exists', status:false})
     }else{
@@ -75,7 +75,7 @@ const registerServiceProvider = async (req, res)=>{
       res.send({message: 'Sign in successful.', status:true});
     }
   }catch(err){
-      console.log(err);
+      console.error(err);
       res.status(500).send({message: 'Internal Server Error.', status:false})
     }
 }
