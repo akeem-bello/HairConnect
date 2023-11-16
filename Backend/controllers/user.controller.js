@@ -83,5 +83,6 @@ const registerServiceProvider = async (req, res)=>{
 module.exports = {
     registerUser,
     userSignIn,
-    getUserDashboard
+    getUserDashboard,
+    registerServiceProvider
 }
