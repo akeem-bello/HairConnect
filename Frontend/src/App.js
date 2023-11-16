@@ -22,7 +22,7 @@ const App = ()=>{
           <Route path='/users/signin' element={<UserSignIn />} />
           <Route path='/service-provider/signin' element={<ServiceProviderSignIn />} />
           <Route path='/users/dashboard' element={hairConnectToken ? <UserDashboard/> : <UserSignIn/>} />
-          <Route path='/service-provider/dashboard' element={<ServiceProviderDashboard />} />
+          <Route path='/service-provider/dashboard' element={hairConnectToken2 ? <ServiceProviderDashboard /> : <ServiceProviderSignIn />} />
         </Routes>
         <Footer />
     </>

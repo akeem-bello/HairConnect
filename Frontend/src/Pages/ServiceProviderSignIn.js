@@ -4,20 +4,20 @@ import { useNavigate } from 'react-router-dom';
 
 const ServiceProviderSignIn = () => {
     const navigate = useNavigate();
-    // const url = 'http://localhost:2023/users/service-provider/signin';
+    const url = 'http://localhost:2023/users/service-provider/signin';
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const [message, setmessage] = useState('');
 
     const signIn = ()=>{
         const serviceProviderDetails = {email, password};
-        // axios.post(url, serviceProviderDetails).then((res)=>{
-        //     setmessage(res.data.message);
-        //     localStorage.hairConnectToken2 = hairConnectToken2;
-        //     if(res.data.status){
-        //         navigate('/service-provider/dashboard')
-        //     }
-        // })
+        axios.post(url, serviceProviderDetails).then((res)=>{
+            setmessage(res.data.message);
+            localStorage.hairConnectToken2 = hairConnectToken2;
+            if(res.data.status){
+                navigate('/service-provider/dashboard')
+            }
+        })
     }
   return (
     <div>
