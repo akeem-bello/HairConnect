@@ -4,27 +4,27 @@ import { useNavigate } from 'react-router-dom';
 
 const ServiceProviderDashboard = () => {
     const navigate = useNavigate();
-    // const url = 'http://localhost:2023/users/dashboard';
-    // const hairConnectToken2 = localStorage.hairConnectToken2;
+    const url = 'http://localhost:2023/users/dashboard';
+    const hairConnectToken2 = localStorage.hairConnectToken2;
     const [companyDetails, setcompanyDetails] = useState('');
 
-    // axios.get(url, {
-    //     headers:{
-    //     "Authorization": `Bearer ${hairConnectToken2}`,
-    //     "Accept": "application/json",
-    //     "Content-Type": "application/json"
-    //   }}).then((res)=>{
-    //     if(!res.data.status){
-    //         localStorage.removeItem('hairConnectToken2');
-    //         navigate('/service-provider/signin');
-    //     }else{
-    //         console.log(res);
-    //         setcompanyDetails(res.data.result);
-    //     }
-    //   })
+    axios.get(url, {
+        headers:{
+        "Authorization": `Bearer ${hairConnectToken2}`,
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      }}).then((res)=>{
+        if(!res.data.status){
+            localStorage.removeItem('hairConnectToken2');
+            navigate('/service-provider/signin');
+        }else{
+            console.log(res);
+            setcompanyDetails(res.data.serviceProviderDetails);
+        }
+      })
 
     const signOut = ()=>{
-        // localStorage.removeItem('hairConnectToken2');
+        localStorage.removeItem('hairConnectToken2');
         navigate('/service-provider/signin');
     }
   return (
@@ -38,7 +38,7 @@ const ServiceProviderDashboard = () => {
                 </div>
 
                 <div className="col-9">
-                    <h4>Welcome, </h4>
+                    <h4>Welcome, {serviceProviderDetails.companyName}</h4>
                 </div>
             </div>
         </div>
