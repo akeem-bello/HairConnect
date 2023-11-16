@@ -1,6 +1,7 @@
 const userModel = require('../models/user.model');
 const serviceProviderModel = require('../models/serviceProvider.model');
 const SECRET = process.env.SECRET;
+const SECRET2 = process.env.SECRET_TWO;
 const jwt = require('jsonwebtoken');
 
 const registerUser = async (req, res)=>{
@@ -79,10 +80,35 @@ const registerServiceProvider = async (req, res)=>{
     }
 }
 
+const serviceProviderSignIn = async (req, res)=>{
+  const serviceProviderDetails = req.body;
+  const email = serviceProviderDetails.email;
+  const password = serviceProviderDetails.password;
+  try{
+    const serviceProvider = await serviceProviderModel.findOne({ email: email });
+    if(!serviceProvider){
+      res.send({ message: 'E-mail does not exist, kindly create an account', status: false });
+      return;
+    }
+    const isPasswordValid = await serviceProvider.validatePassword(password);
+    if(!isPasswordValid){
+      res.send({ message: 'Your password is incorrect, please try again.', status: false });
+      return;
+    }else{
+      const hairConnectToken2 = jwt.sign({ email }, SECRET2, { expiresIn: '10h' });
+      res.send({ message: 'Sign in successful.', status: true, hairConnectToken2 });
+    }
+  }catch(err){
+    console.error(err);
+    res.status(500).send({ message: 'Internal Server Error', status: false });
+  }
+}
+
 
 module.exports = {
     registerUser,
     userSignIn,
     getUserDashboard,
-    registerServiceProvider
+    registerServiceProvider,
+    serviceProviderSignIn
 }
