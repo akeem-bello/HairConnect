@@ -6,7 +6,7 @@ import { useFormik } from 'formik';
 const ServiceProviderSignUp = () => {
     const navigate = useNavigate();
     const [message, setmessage] = useState('');
-    // const url = 'http://localhost:2023/users/service-provider/signup';
+    const url = 'http://localhost:2023/users/service-provider/signup';
 
     const formik = useFormik({
         initialValues: {
@@ -29,12 +29,12 @@ const ServiceProviderSignUp = () => {
                 password: values.password
             };
 
-            // axios.post(url, serviceProviderDetails).then((res)=>{
-            //     setmessage(res.data.message);
-            //     if(res.data.status){
-            //         navigate('/service-provider/signin');
-            //     }
-            // })
+            axios.post(url, serviceProviderDetails).then((res)=>{
+                setmessage(res.data.message);
+                if(res.data.status){
+                    navigate('/service-provider/signin');
+                }
+            })
         },
         validate: (values)=>{
             let errors = {};
