@@ -60,6 +60,10 @@ const getUserDashboard = async (req, res) => {
   }
 };
 
+// const registerServiceProvider = (req, res)=>{
+
+// }
+
 
 module.exports = {
     registerUser,
