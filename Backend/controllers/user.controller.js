@@ -104,11 +104,25 @@ const serviceProviderSignIn = async (req, res)=>{
   }
 }
 
+const getServiceProviderDashboard = async (req, res) => {
+  try{
+    const hairConnectToken2 = req.headers.authorization.split(' ')[1];
+    const verifiedToken = await jwt.verify(hairConnectToken2, SECRET2);
+    const email = verifiedToken.email;
+    const serviceProviderDetails = await serviceProviderModel.findOne({ email: email });
+    res.send({status: true, serviceProviderDetails });
+  }catch(err) {
+    console.error(err);
+    res.send({ message: 'jwt failed', err, status: false });
+  }
+};
+
 
 module.exports = {
     registerUser,
     userSignIn,
     getUserDashboard,
     registerServiceProvider,
-    serviceProviderSignIn
+    serviceProviderSignIn,
+    getServiceProviderDashboard
 }
