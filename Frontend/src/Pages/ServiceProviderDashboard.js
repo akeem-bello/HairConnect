@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ServiceProviderDashboard = () => {
     const navigate = useNavigate();
-    const url = 'http://localhost:2023/users/dashboard';
+    const url = 'http://localhost:2023/users/service-provider/dashboard';
     const hairConnectToken2 = localStorage.hairConnectToken2;
     const [companyDetails, setcompanyDetails] = useState('');
 
