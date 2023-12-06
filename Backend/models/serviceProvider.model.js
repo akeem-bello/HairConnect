@@ -8,7 +8,10 @@ serviceProviderSchema = mongoose.Schema({
     province: String,
     phoneNumber: Number,
     email: String,
-    password: String
+    password: String,
+    service: String,
+    duration: String,
+    price: String
 })
 
 const saltRound = 10;
