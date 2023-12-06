@@ -88,12 +88,10 @@ const serviceProviderSignIn = async (req, res)=>{
     const serviceProvider = await serviceProviderModel.findOne({ email: email });
     if(!serviceProvider){
       res.send({ message: 'E-mail does not exist, kindly create an account', status: false });
-      return;
     }
     const isPasswordValid = await serviceProvider.validatePassword(password);
     if(!isPasswordValid){
       res.send({ message: 'Your password is incorrect, please try again.', status: false });
-      return;
     }else{
       const hairConnectToken2 = jwt.sign({ email }, SECRET2, { expiresIn: '10h' });
       res.send({ message: 'Sign in successful.', status: true, hairConnectToken2 });
@@ -117,6 +115,31 @@ const getServiceProviderDashboard = async (req, res) => {
   }
 };
 
+const addServices = async (req, res)=>{
+  const serviceProviderId = req.params.serviceProviderId;
+  const { service, duration, price } = req.body;
+
+  try {
+    const serviceProvider = await serviceProviderModel.findById(serviceProviderId);
+    if(!serviceProvider){
+      res.status(404).send({message: 'Barber not found.', status: false});
+    }
+
+    serviceProvider.services.push({ service, duration, price });
+
+    const updatedServiceProvider = await serviceProvider.save();
+
+    res.status(200).send({
+      message: 'Service added successfully.',
+      status: true,
+      service: updatedServiceProvider.services[updatedServiceProvider.services.length - 1],
+    });
+  } catch (error) {
+    console.error('Error adding a new service:', error);
+    res.status(500).send({ error: 'Error adding a new service.' });
+  }
+}
+
 
 module.exports = {
     registerUser,
@@ -124,5 +147,6 @@ module.exports = {
     getUserDashboard,
     registerServiceProvider,
     serviceProviderSignIn,
-    getServiceProviderDashboard
+    getServiceProviderDashboard,
+    addServices
 }
