@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ServiceProviderDashboard = () => {
   const navigate = useNavigate();
+  const serviceProviderId = useParams()
   const url = 'http://localhost:2023/users/service-provider/dashboard';
+  const url2 = `http://localhost:2023/users/service-provider/${serviceProviderId}/add-services`;
   const hairConnectToken2 = localStorage.hairConnectToken2;
   const [companyDetails, setCompanyDetails] = useState(null);
+  const [service, setservice] = useState('');
+  const [duration, setduration] = useState('');
+  const [price, setprice] = useState('');
 
   useEffect(() => {
     axios
@@ -35,6 +41,24 @@ const ServiceProviderDashboard = () => {
     navigate('/service-provider/signin');
   };
 
+  const addServices = ()=>{
+    const serviceDetails = {
+      service,
+      duration,
+      price
+    };
+    axios.post(url2, serviceDetails).then((res)=>{
+      if(res.data.status){
+        alert('Service was added successfully.');
+        setservice('');
+        setduration('');
+        setprice('');
+      }else{
+        alert('An error occured, please try again.')
+      }
+    })
+  }
+
   return (
     <div>
       <div>
@@ -59,9 +83,30 @@ const ServiceProviderDashboard = () => {
           <div className="col-9">
             {companyDetails && (
               <h4>
-                Welcome, {companyDetails.companyName} {companyDetails._id}
+                Welcome, {companyDetails.companyName}.
               </h4>
             )}
+
+            <div>
+              <form action="">
+                <label>
+                  Service Name:
+                  <input type="text" value={service} onChange={(e)=>setservice(e.target.value)}/>
+                </label>
+
+                <label>
+                  Duration:
+                  <input type="text" value={duration} onChange={(e)=>setduration(e.target.value)}/>
+                </label>
+
+                <label>
+                  Price:
+                  <input type="text" value={price} onChange={(e)=>setprice(e.target.value)}/>
+                </label>
+
+                <button type='button' onClick={addServices}>Add Service</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
