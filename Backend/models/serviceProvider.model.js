@@ -13,7 +13,7 @@ serviceProviderSchema = mongoose.Schema({
         {
           service: String,
           duration: String,
-          price: String,
+          price: Number,
         },
       ],
 })

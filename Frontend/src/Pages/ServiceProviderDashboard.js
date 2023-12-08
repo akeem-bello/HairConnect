@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ServiceProviderDashboard = () => {
   const navigate = useNavigate();
-  const serviceProviderId = useParams()
   const url = 'http://localhost:2023/users/service-provider/dashboard';
-  const url2 = `http://localhost:2023/users/service-provider/${serviceProviderId}/add-services`;
+  const {serviceProviderId} = useParams()
+  const url2 = `http://localhost:2023/users/service-provider/add-services/${serviceProviderId}`;
   const hairConnectToken2 = localStorage.hairConnectToken2;
   const [companyDetails, setCompanyDetails] = useState(null);
   const [service, setservice] = useState('');
   const [duration, setduration] = useState('');
   const [price, setprice] = useState('');
+  console.log(serviceProviderId)
 
   useEffect(() => {
     axios
