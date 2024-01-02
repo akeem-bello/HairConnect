@@ -7,5 +7,5 @@ router.get('/dashboard', userController.getUserDashboard);
 router.post('/service-provider/signup', userController.registerServiceProvider);
 router.post('/service-provider/signin', userController.serviceProviderSignIn);
 router.get('/service-provider/dashboard', userController.getServiceProviderDashboard);
-router.post('/service-provider/add-services/:serviceProviderId', userController.addServices);
+router.post('/service-provider/add-services', userController.addServices);
 module.exports = router;

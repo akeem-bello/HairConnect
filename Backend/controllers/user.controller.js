@@ -1,5 +1,6 @@
 const userModel = require('../models/user.model');
 const serviceProviderModel = require('../models/serviceProvider.model');
+const servicesModel = require('../models/services.model')
 const SECRET = process.env.SECRET;
 const SECRET2 = process.env.SECRET_TWO;
 const jwt = require('jsonwebtoken');
@@ -116,11 +117,10 @@ const getServiceProviderDashboard = async (req, res) => {
 };
 
 const addServices = async (req, res)=>{
-  const serviceProviderId = req.params.serviceProviderId;
-  const { service, duration, price } = req.body;
+  const { service, duration, price, serviceProviderId } = req.body;
 
   try {
-    const serviceProvider = await serviceProviderModel.findById(serviceProviderId);
+    const serviceProvider = await servicesModel.findById(serviceProviderId);
     if(!serviceProvider){
       res.status(404).send({message: 'Barber not found.', status: false});
     }
