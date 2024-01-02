@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ServiceProviderDashboard = () => {
   const navigate = useNavigate();
   const url = 'http://localhost:2023/users/service-provider/dashboard';
-  const {serviceProviderId} = useParams()
-  const url2 = `http://localhost:2023/users/service-provider/add-services/${serviceProviderId}`;
+  const url2 = 'http://localhost:2023/users/service-provider/add-services';
   const hairConnectToken2 = localStorage.hairConnectToken2;
   const [companyDetails, setCompanyDetails] = useState(null);
   const [service, setservice] = useState('');
   const [duration, setduration] = useState('');
   const [price, setprice] = useState('');
-  console.log(serviceProviderId)
 
   useEffect(() => {
     axios
@@ -45,7 +43,8 @@ const ServiceProviderDashboard = () => {
     const serviceDetails = {
       service,
       duration,
-      price
+      price,
+      serviceProviderId: companyDetails._id
     };
     axios.post(url2, serviceDetails).then((res)=>{
       if(res.data.status){

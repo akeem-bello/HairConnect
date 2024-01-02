@@ -15,7 +15,7 @@ const ServiceProviderSignIn = () => {
             setmessage(res.data.message);
             localStorage.hairConnectToken2 = res.data.hairConnectToken2;
             if(res.data.status){
-                navigate('/service-provider/dashboard')
+                navigate('/service-provider/dashboard/')
             }
         })
     }
