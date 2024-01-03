@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import SideBar from '../Components/SideBar';
 
 const ServiceProviderDashboard = () => {
   const navigate = useNavigate();
@@ -62,24 +63,11 @@ const ServiceProviderDashboard = () => {
     <div>
       <div>
         <div className="row">
-          <div className="col-3">
-            <div>
-              <a href="">Services</a>
-            </div>
-            <div>
-              <a href="">Appointments</a>
-            </div>
-            <div>
-              <a href="">Wallet</a>
-            </div>
-            <div>
-              <a onClick={signOut} href="">
-                <i className="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
-              </a>
-            </div>
+          <div className="col-2">
+          <SideBar />
           </div>
 
-          <div className="col-9">
+          <div className="col-10">
             {companyDetails && (
               <h4>
                 Welcome, {companyDetails.companyName}.
