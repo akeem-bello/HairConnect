@@ -117,27 +117,16 @@ const getServiceProviderDashboard = async (req, res) => {
 };
 
 const addServices = async (req, res)=>{
-  const { service, duration, price, serviceProviderId } = req.body;
-
-  try {
-    const serviceProvider = await servicesModel.findById(serviceProviderId);
-    if(!serviceProvider){
-      res.status(404).send({message: 'Barber not found.', status: false});
+  const serviceDetails = req.body;
+  try{
+    const form = new servicesModel(serviceDetails);
+    await form.save();
+    res.send({ message: 'Services added successful', status: true });
+      
+    }catch(err){
+      console.error(err);
+      res.status(500).send({ message: 'Internal Server Error', status: false });
     }
-
-    serviceProvider.services.push({ service, duration, price });
-
-    const updatedServiceProvider = await serviceProvider.save();
-
-    res.status(200).send({
-      message: 'Service added successfully.',
-      status: true,
-      service: updatedServiceProvider.services[updatedServiceProvider.services.length - 1],
-    });
-  } catch (error) {
-    console.error('Error adding a new service:', error);
-    res.status(500).send({ error: 'Error adding a new service.' });
-  }
 }
 
 
