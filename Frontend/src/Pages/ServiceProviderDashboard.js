@@ -35,11 +35,6 @@ const ServiceProviderDashboard = () => {
       });
   }, [navigate, hairConnectToken2]);
 
-  const signOut = () => {
-    localStorage.removeItem('hairConnectToken2');
-    navigate('/service-provider/signin');
-  };
-
   const addServices = ()=>{
     const serviceDetails = {
       service,

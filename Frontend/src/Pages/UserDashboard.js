@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import UserSideBar from '../Components/UserSideBar';
 
 const UserDashboard = () => {
     const navigate = useNavigate();
@@ -23,19 +24,12 @@ const UserDashboard = () => {
         }
       })
 
-    const signOut = ()=>{
-        localStorage.removeItem('hairConnectToken');
-        navigate('/users/signin');
-    }
   return (
     <div>
         <div>
             <div className="row">
                 <div className="col-3">
-                    <div><a href="">Appointments</a></div>
-                    <div><a href="">Find a barber/hairdresser</a></div>
-                    <div><a href="">Wallet</a></div>
-                    <div><a onClick={signOut} href=''><i class="fa-solid fa-arrow-right-from-bracket"></i>  Sign Out</a></div>
+                    <UserSideBar />
                 </div>
 
                 <div className="col-9">
